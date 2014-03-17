@@ -93,7 +93,7 @@ public class Proxy implements Runnable {
                 
                 System.out.println("Connecting to USEast3 for " + ipString);
                 //serverSocket = new Socket("ec2-50-19-47-160.compute-1.amazonaws.com", 2050); // "USEast3"
-                serverSocket = new Socket("80.241.222.17", 2050); //use ip instead of host due to hosts block
+                serverSocket = new Socket("54.224.68.81", 2050); //use ip instead of host due to hosts block
                 System.out.println("Connected to USEast3 for " + ipString);
                 
                 SiphonHose clientHose = new SiphonHose(

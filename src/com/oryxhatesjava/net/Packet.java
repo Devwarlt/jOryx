@@ -37,83 +37,84 @@ import com.oryxhatesjava.net.data.Parsable;
 public class Packet implements Parsable {
     
 	  public static final int FAILURE = 0;
-	  public static final int CANCELTRADE = 1;
-	  public static final int USEPORTAL = 3;
-	  public static final int INVRESULT = 4;
-	  public static final int JOINGUILD = 5;
-	  public static final int PING = 6;
-	  public static final int MOVE = 7;
-	  public static final int GUILDINVITE = 8;
-	  public static final int GLOBAL_NOTIFICATION = 9;
-	  public static final int SETCONDITION = 10;
-	  public static final int UPDATEACK = 11;
-	  public static final int TRADEDONE = 12;
-	  public static final int SHOOT = 13;
-	  public static final int GOTOACK = 14;
-	  public static final int CREATEGUILD = 15;
-	  public static final int PONG = 16;
-	  public static final int HELLO = 17;
-	  public static final int TRADEACCEPTED = 18;
-	  public static final int ENEMYSHOOT = 19;
-	  public static final int NAMERESULT = 20;
-	  public static final int REQUESTTRADE = 21;
+	  public static final int CANCELTRADE = 6;
+	  public static final int USEPORTAL = 36;
+	  public static final int INVRESULT = 60;
+	  public static final int JOINGUILD = 11;
+	  public static final int PING = 14;
+	  public static final int MOVE = 58;
+	  public static final int GUILDINVITE = 12;
+	  public static final int GLOBAL_NOTIFICATION = 63;
+	  public static final int SETCONDITION = 89;
+	  public static final int UPDATEACK = 62;
+	  public static final int TRADEDONE = 20;
+	  public static final int SHOOT = 75;
+	  public static final int GOTOACK = 79;
+	  public static final int CREATEGUILD = 69;
+	  public static final int PONG = 5;
+	  public static final int HELLO = 90;
+	  public static final int TRADEACCEPTED = 50;
+	  public static final int ENEMYSHOOT = 19; //Unknown
+	  public static final int NAMERESULT = 10;
+	  public static final int REQUESTTRADE = 30;
 	  
-	  public static final int SHOOTACK = 22;
+	  public static final int SHOOTACK = 1;
 	  
-	  public static final int TRADECHANGED = 23;
-	  public static final int PLAYERHIT = 24;
-	  public static final int TEXT = 25;
-	  public static final int UPDATE = 26;
-	  public static final int BUYRESULT = 27;
-	  public static final int PIC = 28;
-	  public static final int USEITEM = 30;
-	  public static final int CREATE_SUCCESS = 31;
-	  public static final int CHOOSENAME = 33;
-	  public static final int QUESTOBJID = 34;
-	  public static final int INVDROP = 35;
-	  public static final int CREATE = 36;
-	  public static final int CHANGETRADE = 37;
-	  public static final int PLAYERSHOOT = 38;
+	  public static final int TRADECHANGED = 53;
+	  public static final int PLAYERHIT = 13;
+	  public static final int TEXT = 93;
+	  public static final int UPDATE = 21;
+	  public static final int BUYRESULT = 23;
+	  public static final int PIC = 49;
+	  public static final int USEITEM = 40;
+	  public static final int CREATE_SUCCESS = 81;
+	  public static final int CHOOSENAME = 86;
+	  public static final int QUESTOBJID = 88;
+	  public static final int INVDROP = 55;
+	  public static final int CREATE = 38;
+	  public static final int CHANGETRADE = 82;
+	  public static final int PLAYERSHOOT = 41;
 	  
-	  public static final int RECONNECT = 39;
+	  public static final int RECONNECT = 33;
 	  
-	  public static final int CHANGEGUILDRANK = 40;
-	  public static final int DEATH = 41;
-	  public static final int ESCAPE = 42;
-	  public static final int PLAYSOUND = 44;
-	  public static final int LOAD = 45;
-	  public static final int ACCOUNTLIST = 46;
-	  public static final int DAMAGE = 47;
-	  public static final int CHECKCREDITS = 48;
-	  public static final int TELEPORT = 49;
-	  public static final int BUY = 50;
-	  public static final int SQUAREHIT = 51;
-	  public static final int GOTO = 52;
-	  public static final int EDITACCOUNTLIST = 53;
+	  public static final int CHANGEGUILDRANK = 52;
+	  public static final int DEATH = 4;
+	  public static final int ESCAPE = 74;
+	  public static final int PLAYSOUND = 42;
+	  public static final int LOAD = 64;
+	  public static final int ACCOUNTLIST = 59;
+	  public static final int DAMAGE = 24;
+	  public static final int CHECKCREDITS = 91;
+	  public static final int TELEPORT = 9;
+	  public static final int BUY = 28;
+	  public static final int SQUAREHIT = 57;
+	  public static final int GOTO = 7;
+	  public static final int EDITACCOUNTLIST = 46;
 	  //public static final int CLIENTSTAT_FILE = 55;
-	  public static final int SHOW_EFFECT = 56;
-	  public static final int ACCEPTTRADE = 57;
-	  public static final int CREATEGUILDRESULT = 58;
-	  public static final int AOEACK = 59;
-	  public static final int MAPINFO = 60;
-	  public static final int TRADEREQUESTED = 61;
-	  public static final int NEW_TICK = 62;
-	  public static final int NOTIFICATION = 63;
+	  public static final int SHOW_EFFECT = 51;
+	  public static final int ACCEPTTRADE = 66;
+	  public static final int CREATEGUILDRESULT = 77;
+	  public static final int AOEACK = 80;
+	  public static final int MAPINFO = 65;
+	  public static final int TRADEREQUESTED = 76;
+	  public static final int NEW_TICK = 83;
+	  public static final int NOTIFICATION = 37;
 	  
-	  public static final int GROUNDDAMAGE = 64;
+	  public static final int GROUNDDAMAGE = 48;
 	  
-	  public static final int INVSWAP = 65;
-	  public static final int OTHERHIT = 66;
-	  public static final int TRADESTART = 67;
-	  public static final int AOE = 68;
-	  public static final int PLAYERTEXT = 69;
-	  public static final int ALLYSHOOT = 74;
-	  public static final int CLIENTSTAT = 75;
-	  public static final int ENEMYHIT = 76;
-	  public static final int INVITEDTOGUILD = 77;
-	  public static final int GUILDREMOVE = 78;
+	  public static final int INVSWAP = 17;
+	  public static final int OTHERHIT = 15;
+	  public static final int TRADESTART = 78;
+	  public static final int AOE = 92;
+	  public static final int PLAYERTEXT = 87;
+	  public static final int ALLYSHOOT = 34;
+	  public static final int CLIENTSTAT = 35;
+	  public static final int ENEMYHIT = 67;
+	  public static final int INVITEDTOGUILD = 8;
+	  public static final int GUILDREMOVE = 18;
+	  public static final int RESKIN = 45;
 	  
-	  public static final int FILE = 55;
+	  public static final int FILE = 25;
     
     public int type;
     
@@ -283,6 +284,8 @@ public class Packet implements Parsable {
             	return new ChangeGuildRankPacket(in);
             case PLAYSOUND:
             	return new PlaySoundPacket(in);
+            case RESKIN:
+                return new ReskinPacket(in);
             default:
                 return new Packet(type, data);
         }
