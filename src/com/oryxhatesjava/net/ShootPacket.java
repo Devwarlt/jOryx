@@ -34,22 +34,25 @@ import com.oryxhatesjava.net.data.Parsable;
  */
 public class ShootPacket extends Packet implements Parsable {
     
-    public int bulletId;
-    public int ownerId;
-    public int containerType;
-    public Location startingPos;
-    public float angle;
-    public int damage;
+	public int bulletId;
+	public int ownerId;
+	public int bulletType;
+	public Location startingPos = new Location();
+	public float angle;
+	public short damage;
+	public int numShots;
+	public float angleInc;
     
-    public ShootPacket(int bulletId, int ownerId, int containerType,
-            Location startingPos, float angle, int damage) {
+    public ShootPacket(int bulletId, int ownerId, int bulletType, Location startingPos, float angle, short damage, int numShots, float angleInc) {
     	type = Packet.SHOOT;
         this.bulletId = bulletId;
         this.ownerId = ownerId;
-        this.containerType = containerType;
+        this.bulletType = bulletType;
         this.startingPos = startingPos.clone();
         this.angle = angle;
         this.damage = damage;
+        this.numShots = numShots;
+        this.angleInc = angleInc;
     }
     
     public ShootPacket(DataInput read) {
@@ -66,27 +69,38 @@ public class ShootPacket extends Packet implements Parsable {
     }
     
     @Override
-    public void parseFromDataInput(DataInput read) throws IOException {
-        bulletId = read.readUnsignedByte();
-        ownerId = read.readInt();
-        containerType = read.readShort();
-        startingPos = new Location(read);
-        angle = read.readFloat();
-        damage = read.readShort();
+    public void parseFromDataInput(DataInput in) throws IOException {
+    	this.bulletId = in.readUnsignedByte();
+		this.ownerId = in.readInt();
+		this.bulletType = in.readUnsignedByte();
+		this.startingPos.parseFromDataInput(in);
+		this.angle = in.readFloat();
+		this.damage = in.readShort();
+		try {
+			this.numShots = in.readUnsignedByte();
+			this.angleInc = in.readFloat();
+		} catch (IOException e) {
+			this.numShots = 1;
+			this.angleInc = 0;
+		}
     }
     
     @Override
-    public void writeToDataOutput(DataOutput write) throws IOException {
-        write.writeByte(bulletId);
-        write.writeInt(ownerId);
-        write.writeShort(containerType);
-        startingPos.writeToDataOutput(write);
-        write.writeFloat(angle);
-        write.writeShort(damage);
+    public void writeToDataOutput(DataOutput out) throws IOException {
+    	out.writeByte(this.bulletId);
+		out.writeInt(this.ownerId);
+		out.writeByte(this.bulletType);
+		this.startingPos.writeToDataOutput(out);
+		out.writeFloat(this.angle);
+		out.writeShort(this.damage);
+		if (this.numShots != 1 || this.angleInc != 0) {
+			out.writeByte(this.numShots);
+			out.writeFloat(this.angleInc);
+		}
     }
     
     @Override
     public String toString() {
-        return "SHOOT " + bulletId + " " + ownerId + " " + containerType + " " + startingPos + " " + angle + " " + damage;
+        return "SHOOT " + bulletId + " " + ownerId + " " + " " + startingPos + " " + angle + " " + damage;
     }
 }

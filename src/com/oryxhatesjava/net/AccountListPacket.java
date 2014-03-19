@@ -27,7 +27,7 @@ import com.oryxhatesjava.net.data.Parsable;
 public class AccountListPacket extends Packet implements Parsable {
 
 	public int accountListId; //int
-	public int[] accountIds;
+	public String[] accountIds = new String[0];
 	
 	public AccountListPacket(DataInput in) {
 		try {
@@ -44,20 +44,19 @@ public class AccountListPacket extends Packet implements Parsable {
 	
 	@Override
 	public void parseFromDataInput(DataInput in) throws IOException {
-		accountListId = in.readInt();
-		int size = in.readShort();
-		accountIds = new int[size];
-		for (int i = 0; i < size; i++) {
-			accountIds[i] = in.readInt();
+		this.accountListId = in.readInt();
+		this.accountIds = new String[in.readShort()];
+		for (int i = 0; i < this.accountIds.length; i++) {
+			this.accountIds[i] = in.readUTF();
 		}
 	}
 	
 	@Override
 	public void writeToDataOutput(DataOutput out) throws IOException {
-		out.writeInt(accountListId);
-		out.writeShort(accountIds.length);
-		for (int i : accountIds) {
-			out.writeInt(i);
+		out.writeInt(this.accountListId);
+		out.writeShort(this.accountIds.length);
+		for (String accountId: this.accountIds) {
+			out.writeUTF(accountId);
 		}
 	}
 	

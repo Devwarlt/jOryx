@@ -26,6 +26,7 @@ import com.oryxhatesjava.net.data.Parsable;
 public class LoadPacket extends Packet implements Parsable {
 
 	public int charId; //int
+	public boolean isFromArena;
 	
 	public LoadPacket(DataInput in) {
 		try {
@@ -43,11 +44,13 @@ public class LoadPacket extends Packet implements Parsable {
 	@Override
 	public void parseFromDataInput(DataInput in) throws IOException {
 		charId = in.readInt();
+		this.isFromArena = in.readBoolean();
 	}
 	
 	@Override
 	public void writeToDataOutput(DataOutput out) throws IOException {
 		out.writeInt(charId);
+		out.writeBoolean(this.isFromArena);
 	}
 	
 	@Override

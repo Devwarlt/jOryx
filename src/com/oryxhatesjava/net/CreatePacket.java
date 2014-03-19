@@ -35,11 +35,12 @@ import com.oryxhatesjava.net.data.Parsable;
  */
 public class CreatePacket extends Packet implements Parsable {
     
-    public short objectType;
+	public int classType;
+	public int skinType;
     
     public CreatePacket(short objectType) {
     	type = Packet.CREATE;
-        this.objectType = objectType;
+        this.classType = classType;
     }
     
     public CreatePacket(DataInput read) {
@@ -56,17 +57,19 @@ public class CreatePacket extends Packet implements Parsable {
     }
     
     @Override
-    public void parseFromDataInput(DataInput read) throws IOException {
-        objectType = read.readShort();
+    public void parseFromDataInput(DataInput in) throws IOException {
+    	this.classType = in.readUnsignedShort();
+		this.skinType = in.readUnsignedShort();
     }
     
     @Override
-    public void writeToDataOutput(DataOutput write) throws IOException {
-        write.writeShort(objectType);
+    public void writeToDataOutput(DataOutput out) throws IOException {
+    	out.writeShort(this.classType);
+		out.writeShort(this.skinType);
     }
     
     @Override
     public String toString() {
-        return "CREATE " + objectType;
+        return "CREATE " + classType;
     }
 }
